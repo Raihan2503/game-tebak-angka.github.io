@@ -1,0 +1,163 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+body 
+{  
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   padding: 25px;
+   font-family: 'Courier New', Courier, monospace;
+   background: linear-gradient(250deg, rgba(252,240,255,1) 24%, rgba(40,62,157,1) 76%);
+}
+.container 
+{
+    max-width: 600px;
+    background-color: #293462;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 40px;
+    color: white;
+    margin: auto;
+    margin-top: 20px;
+}
+.order 
+{
+    order: 2;
+}
+.container header > h2 
+{
+    text-align: center;
+    padding: 8px 8px;
+    border-bottom: 4px solid black;
+    margin-bottom: 30px;
+}
+.container .rules-game,
+.container .score-game 
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.container .rules-game > header,
+.container .score-game > header
+{
+    padding: 10px;
+    margin-bottom: 9px;
+    position: relative;
+}
+.container .rules-game > header::after,
+.container .score-game > header::after 
+{
+    content: '';
+    display: block;
+    position: relative;
+    width: 65%;
+    border-bottom: 3px solid black;
+    top: 6px;
+    left: 17%;
+    margin-bottom: 14px;
+}
+.container .body-rules,
+.container .score-amount 
+{
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+main 
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.content-game
+{
+    display: flex;
+    max-width: 400px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.content-game .form-answer
+{
+    margin-top: 10px;
+}
+.content-game input 
+{
+    padding: 4px;
+    width: 70px;
+    margin-left: 6px;
+    /* margin-right: 10px; */
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.game .btn-answer
+{
+    padding: 9px 17px;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 14px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #0078AA;
+    margin-left: 10px;
+}
+
+/* End Section rules */
+
+/* Section Score */
+.score-amount p
+{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+@media screen and (min-width: 800px) {
+    body
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .container
+     {
+       width: 600px;
+       margin-top: 0;
+       margin: 0 0 0 30px;
+    }.order 
+    {
+        order: 0;
+    }
+    .content-game input 
+    {
+        padding: 4px;
+        width: 100px;
+        margin-right: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .game .btn-answer
+    {
+        padding: 9px 20px;
+        border-radius: 5px;
+        outline: none;
+        margin-top: 14px;
+        border: none;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1px;
+        background-color: #0078AA;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebank Angka</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+   <div class="container order">
+        <header>
+            <h2>Tebak Angka</h2>
+        </header>
+        <div class="rules-game">
+            <header>
+                <h3>Aturan Permainan</h3>
+            </header>
+            <div class="body-rules">
+                <p>Pemain harus menebak angka sesuai dengan jawaban Diberikan oleh Instruktur.
+                    Dan masing masing angka berisikan 3 digit dimana angka terdiri dari 1 - 10.
+                </p>
+            </div>
+        </div>
+        <main>
+            <div class="game">
+                <header>
+                    <h4>Tebak angka dari 1 - 10</h4>
+                </header>
+                <form action="" method="post" id="answerUser">
+                <div class="content-game">
+                        <div class="form-answer">
+                            <input type="text" id="jawaban1" autocomplete="off" />
+                        </div>
+                        <div class="form-answer">
+                            <input type="text" id="jawaban2" autocomplete="off" />
+                        </div>
+                        <div class="form-answer">
+                            <input type="text" id="jawaban3" autocomplete="off" />
+                        </div>
+                </div>
+                    <button class="btn-answer" type="submit">Kirim</button>
+                </form>
+            </div>
+        </main>
+   </div>
+
+   <div class="container">
+        <header>
+            <h2 class="name-tag"></h2>
+        </header>
+        <div class="score-game">
+            <header>
+                <h3>Score</h3>
+            </header>
+            <div class="score-amount">
+                <p></p>
+            </div>
+        </div>
+        <main>
+            <div class="game">
+                <header>
+                    <h4>Selamat Bermain</h4>
+                </header>
+            </div>
+        </main>
+   </div>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
