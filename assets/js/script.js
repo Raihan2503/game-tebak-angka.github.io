@@ -208,7 +208,7 @@ contentGame.addEventListener('click', (e) => {
         }
     })
     
-btnAnswer.addEventListener('click', (e) => {
+btnAnswer.addEventListener('keydown', (e) => {
         checkAnswer();
         scoreAmount();
         saveDataLocal();
