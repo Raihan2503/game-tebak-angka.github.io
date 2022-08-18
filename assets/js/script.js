@@ -1,5 +1,6 @@
 /*
     Creator Raihan Alfaridzi Kustiawan
+    from zero to hero :)
 */
 // let's go to write code
 const contentGame = document.querySelector('.content-game');
@@ -185,11 +186,13 @@ answerUser.addEventListener('submit', e => {
     showScore();
     resultPlayer();
 
-    if(localStorage.getItem(dataUser) !== null) {
-        const data = getDataLocalStorage();
-        if(data[0].score < 3) {
-            e.preventDefault();
-        }
+    if(localStorage.getItem(dataUser) === null) {
+        showScore();
+        masukanNama();
+        const objUser = makeObjectUser(namaUser, jawaban , 0, false);
+        usrArr[0] = objUser;
+        localStorage.setItem(dataUser, JSON.stringify(usrArr));
     }
+    e.preventDefault();
     e.stopPropagation();
 });
