@@ -88,11 +88,9 @@ const masukanNama = () => {
 
     // getScore
     let myAnswer = generatScore();
-    console.log(myAnswer);
     const checkAnswer = () => {
         if(myAnswer == jawaban) {
             myAnswer = generatScore();
-            console.log(myAnswer);
             ++scorer;
             alert("Jawaban Anda Benar!");
             checking = true;
