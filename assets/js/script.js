@@ -168,11 +168,11 @@ const resultPlayer = () => {
     if (localStorage.getItem(dataUser) !== null) {
         for (const player of dataPlayer) {
             if (player.score === 3) {
+                showScore();
                 alert("Kamu Menang!");
                 player.result = true;
                 result = player.result;
                 scorer = player.scorer = 0;
-                showScore();
                 localStorage.clear();
             }
         }
