@@ -172,8 +172,8 @@ const resultPlayer = () => {
                 player.result = true;
                 result = player.result;
                 scorer = player.scorer = 0;
-                localStorage.clear();
                 showScore();
+                localStorage.clear();
             }
         }
     }
