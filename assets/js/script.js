@@ -81,9 +81,9 @@ const saveDataLocal = () => {
 // Generate Score
 const generateScore = () => {
     let generateAnswer = "";
-    generateAnswer += Math.floor(Math.random() * 10 + 1);
-    generateAnswer += " " + Math.floor(Math.random() * 10 + 1);
-    generateAnswer += " " + Math.floor(Math.random() * 10 + 1);
+    generateAnswer += Math.floor(Math.random() * 9 + 1);
+    generateAnswer += " " + Math.floor(Math.random() * 9 + 1);
+    generateAnswer += " " + Math.floor(Math.random() * 9 + 1);
     generateAnswer.toString();
     return generateAnswer;
 }
@@ -124,7 +124,7 @@ if(jawaban1 != false && jawaban2 != false && jawaban3 != false) {
     jawaban += " " + jawaban3;
 }
 
-if (jawaban1 > 10 || jawaban2 > 10 || jawaban3 > 10) {
+if (jawaban1 > 9 || jawaban2 > 9 || jawaban3 > 9) {
     alert("Angka yang kamu masukan terlalu besar!");
     return false;
 } else if(jawaban1.trim() > 0 || jawaban2.trim() > 0 || jawaban3.trim() > 0) {
@@ -195,18 +195,14 @@ const showScore = () => {
         }
     }
 }
-
-contentGame.addEventListener('keydown', (e) => {
-        getAnswerUser(e);
-    });
     
-    window.document.addEventListener('DOMContentLoaded', () => {
+window.document.addEventListener('DOMContentLoaded', () => {
+    showScore()
+    if (localStorage.getItem(dataUser) === null) {
         showScore()
-        if (localStorage.getItem(dataUser) === null) {
-            showScore()
-            masukanNama();
-        }
-    })
+        masukanNama();
+    }
+})
     
 btnAnswer.addEventListener('click', (e) => {
         checkAnswer();
@@ -226,3 +222,16 @@ btnAnswer.addEventListener('click', (e) => {
     e.stopPropagation();
     window.location.reload();
 });
+
+let widthScreen;
+widthScreen = document.body.clientWidth;
+console.log(widthScreen);
+if(widthScreen < 900) {
+    contentGame.addEventListener('keyup', (e) => {
+            getAnswerUser(e);
+    });
+} else {
+    contentGame.addEventListener('click', (e) => {
+        getAnswerUser(e)
+    });
+}
