@@ -196,7 +196,7 @@ const showScore = () => {
     }
 }
 
-contentGame.addEventListener('keyup', (e) => {
+contentGame.addEventListener('click', (e) => {
         getAnswerUser(e);
     });
     
