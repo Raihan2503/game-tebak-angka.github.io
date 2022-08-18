@@ -1,4 +1,6 @@
-
+/*
+    Creator Raihan Alfaridzi Kustiawan
+*/
 // let's go to write code
 const contentGame = document.querySelector('.content-game');
 const answerUser = document.querySelector('#answerUser');
@@ -85,15 +87,18 @@ const masukanNama = () => {
 
     // getScore
     let myAnswer = generatScore();
+    console.log(myAnswer);
     const checkAnswer = () => {
         if(myAnswer == jawaban) {
             myAnswer = generatScore();
+            console.log(myAnswer);
             ++scorer;
             alert("Jawaban Anda Benar!");
-            return checking = true;
+            checking = true;
         } else {
             alert("Jawaban Anda Salah!");
-            return checking = false;
+            showScore();
+             checking = false;
         }
     }
 
@@ -138,13 +143,18 @@ const masukanNama = () => {
     }
 
     const showScore = () => {
-        if(checking == false) {
+        const dataPlayer = getDataLocalStorage();
+        if(checking) {
             if(localStorage.getItem(dataUser) === null) {
-                scorer = scoreAmount();
                 scorePlayer.firstElementChild.innerHTML = scorer;
             } else {
-                const dataPlayer = getDataLocalStorage();
                 scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
+            }
+        } else {
+            if(localStorage.getItem(dataUser) !== null) {
+                scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
+            } else {
+                scorePlayer.firstElementChild.innerHTML = scorer;
             }
         }
     }
@@ -161,9 +171,9 @@ contentGame.addEventListener('keyup', () => {
 });
 
 window.document.addEventListener('DOMContentLoaded', () => {
-    showScore();
-    resultPlayer();
+    showScore()
     if(localStorage.getItem(dataUser) === null) {
+        showScore()
         masukanNama();
     }
 })
@@ -173,7 +183,13 @@ answerUser.addEventListener('submit', e => {
     scoreAmount();
     saveDataLocal();
     showScore();
+    resultPlayer();
 
-    // e.preventDefault();
+    if(localStorage.getItem(dataUser) !== null) {
+        const data = getDataLocalStorage();
+        if(data[0].score < 3) {
+            e.preventDefault();
+        }
+    }
     e.stopPropagation();
 });
