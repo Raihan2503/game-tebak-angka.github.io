@@ -196,7 +196,7 @@ const showScore = () => {
     }
 }
 
-contentGame.addEventListener('click', (e) => {
+contentGame.addEventListener('keydown', (e) => {
         getAnswerUser(e);
     });
     
@@ -208,7 +208,7 @@ contentGame.addEventListener('click', (e) => {
         }
     })
     
-btnAnswer.addEventListener('keydown', (e) => {
+btnAnswer.addEventListener('click', (e) => {
         checkAnswer();
         scoreAmount();
         saveDataLocal();
