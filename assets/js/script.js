@@ -166,7 +166,7 @@ const showScore = () => {
         if (localStorage.getItem(dataUser) === null) {
             scorePlayer.firstElementChild.innerHTML = scorer;
         } else {
-            scorePlayer.firstElementChild.innerHTML = (dataPlayer[0].score+1);
+            scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
         }
     } else {
         if (localStorage.getItem(dataUser) !== null) {
@@ -186,7 +186,6 @@ const resultPlayer = () => {
                 alert("Kamu Menang!");
                 player.result = true;
                 result = player.result;
-                scorer = player.scorer = 0;
                 showScore();
                 localStorage.clear();
             }
