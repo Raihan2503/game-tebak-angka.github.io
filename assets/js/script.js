@@ -160,23 +160,6 @@ const scoreAmount = () => {
     }
 }
 
-const resultPlayer = () => {
-    const dataPlayer = getDataLocalStorage();
-    if (localStorage.getItem(dataUser) !== null) {
-        for (const player of dataPlayer) {
-            scorePlayer.firstElementChild.innerHTML = player.score;
-            if (player.score === 3) {
-                alert("Kamu Menang!");
-                player.result = true;
-                result = player.result;
-                scorer = player.scorer = 0;
-                showScore();
-                localStorage.clear();
-            }
-        }
-    }
-}
-
 const showScore = () => {
     const dataPlayer = getDataLocalStorage();
     if (checking) {
@@ -193,11 +176,27 @@ const showScore = () => {
         }
     }
 }
+
+const resultPlayer = () => {
+    const dataPlayer = getDataLocalStorage();
+    if (localStorage.getItem(dataUser) !== null) {
+        scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
+        for (const player of dataPlayer) {
+            if (player.score === 3) {
+                alert("Kamu Menang!");
+                player.result = true;
+                result = player.result;
+                scorer = player.scorer = 0;
+                showScore();
+                localStorage.clear();
+            }
+        }
+    }
+}
     
 window.document.addEventListener('DOMContentLoaded', () => {
     showScore()
     if (localStorage.getItem(dataUser) === null) {
-        showScore()
         masukanNama();
     }
 })
@@ -210,12 +209,15 @@ btnAnswer.addEventListener('click', (e) => {
 
     if (localStorage.getItem(dataUser) === null) {
         showScore();
-        masukanNama();
-        const objUser = makeObjectUser(namaUser, jawaban, 0, false);
-        usrArr[0] = objUser;
-        localStorage.setItem(dataUser, JSON.stringify(usrArr));
+       setTimeout(() => {
+           masukanNama();
+           const objUser = makeObjectUser(namaUser, jawaban, 0, false);
+           usrArr[0] = objUser;
+           localStorage.setItem(dataUser, JSON.stringify(usrArr));
+       }, 500);
     }
 
+    // window.location.reload();
     e.stopPropagation();
 });
 
@@ -223,7 +225,7 @@ let widthScreen;
 widthScreen = document.body.clientWidth;
 if(widthScreen < 900) {
     contentGame.addEventListener('keyup', (e) => {
-            getAnswerUser(e);
+        getAnswerUser(e);
     });
 } else {
     contentGame.addEventListener('click', (e) => {
