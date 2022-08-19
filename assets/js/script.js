@@ -1,7 +1,3 @@
-/*
-    Creator Raihan Alfaridzi Kustiawan
-    from zero to hero :)
-*/
 // let's go to write code
 let jawabanArr = "";
 const contentGame = document.querySelector('.content-game');
@@ -97,6 +93,7 @@ const checkAnswer = () => {
         myAnswer = generateScore();
         jawabanValidasi = myAnswer.split(" ");
         ++scorer;
+        scoreAmount();
         jawaban = "";
         alert("Jawaban Anda Benar!");
         checking = true;
@@ -207,9 +204,8 @@ window.document.addEventListener('DOMContentLoaded', () => {
     
 btnAnswer.addEventListener('click', (e) => {
         checkAnswer();
-        scoreAmount();
-        saveDataLocal();
         showScore();
+        saveDataLocal();
         resultPlayer();
 
     if (localStorage.getItem(dataUser) === null) {
@@ -219,9 +215,8 @@ btnAnswer.addEventListener('click', (e) => {
         usrArr[0] = objUser;
         localStorage.setItem(dataUser, JSON.stringify(usrArr));
     }
-    e.preventDefault();
+
     e.stopPropagation();
-    window.location.reload();
 });
 
 let widthScreen;
