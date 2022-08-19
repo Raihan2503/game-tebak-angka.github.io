@@ -5,6 +5,7 @@
 // let's go to write code
 let jawabanArr = "";
 const contentGame = document.querySelector('.content-game');
+const scorePlayer = document.querySelector('.score-amount');
 const btnAnswer = document.querySelector('.btn-answer');
 const dataUser = "DATA_USER";
 let jawaban = "";
@@ -145,7 +146,6 @@ if (jawaban1 > 9 || jawaban2 > 9 || jawaban3 > 9) {
    return jawaban;
 }
 
-const scorePlayer = document.querySelector('.score-amount');
 const scoreAmount = () => {
     const dataPlayer = getDataLocalStorage();
     if (localStorage.getItem(dataUser) !== null) {
@@ -167,12 +167,13 @@ const resultPlayer = () => {
     const dataPlayer = getDataLocalStorage();
     if (localStorage.getItem(dataUser) !== null) {
         for (const player of dataPlayer) {
+            scorePlayer.firstElementChild.innerHTML = player.score;
             if (player.score === 3) {
-                showScore();
                 alert("Kamu Menang!");
                 player.result = true;
                 result = player.result;
                 scorer = player.scorer = 0;
+                showScore();
                 localStorage.clear();
             }
         }
@@ -225,7 +226,6 @@ btnAnswer.addEventListener('click', (e) => {
 
 let widthScreen;
 widthScreen = document.body.clientWidth;
-console.log(widthScreen);
 if(widthScreen < 900) {
     contentGame.addEventListener('keyup', (e) => {
             getAnswerUser(e);
