@@ -180,13 +180,11 @@ const showScore = () => {
 const resultPlayer = () => {
     const dataPlayer = getDataLocalStorage();
     if (localStorage.getItem(dataUser) !== null) {
-        scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
         for (const player of dataPlayer) {
             if (player.score === 3) {
                 alert("Kamu Menang!");
                 player.result = true;
                 result = player.result;
-                showScore();
                 localStorage.clear();
             }
         }
@@ -201,19 +199,19 @@ window.document.addEventListener('DOMContentLoaded', () => {
 })
     
 btnAnswer.addEventListener('click', (e) => {
-        checkAnswer();
-        showScore();
-        saveDataLocal();
-        resultPlayer();
+    checkAnswer();
+    showScore();
+    saveDataLocal();
+    resultPlayer();
 
     if (localStorage.getItem(dataUser) === null) {
         showScore();
-       setTimeout(() => {
-           masukanNama();
-           const objUser = makeObjectUser(namaUser, jawaban, 0, false);
-           usrArr[0] = objUser;
-           localStorage.setItem(dataUser, JSON.stringify(usrArr));
-       }, 500);
+           setTimeout(() => {
+               masukanNama();
+               const objUser = makeObjectUser(namaUser, jawaban, 0, false);
+               usrArr[0] = objUser;
+               localStorage.setItem(dataUser, JSON.stringify(usrArr));
+           }, 2000);
     }
 
     // window.location.reload();
