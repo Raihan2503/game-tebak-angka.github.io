@@ -2,7 +2,9 @@
 let jawabanArr = "";
 const contentGame = document.querySelector('.content-game');
 const scorePlayer = document.querySelector('.score-amount');
-const btnAnswer = document.querySelector('.btn-answer');
+// const btnAnswer = document.querySelector('.btn-answer');
+// const btnClear = document.querySelector('.btn-clear');
+const button =  Array.from(document.querySelectorAll('button'));
 const dataUser = "DATA_USER";
 let jawaban = "";
 let scorer = 0;
@@ -94,7 +96,6 @@ const checkAnswer = () => {
         jawabanValidasi = myAnswer.split(" ");
         ++scorer;
         scoreAmount();
-        jawaban = "";
         alert("Jawaban Anda Benar!");
         checking = true;
     } else {
@@ -179,13 +180,13 @@ const showScore = () => {
 
 const resultPlayer = () => {
     const dataPlayer = getDataLocalStorage();
+    scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
     if (localStorage.getItem(dataUser) !== null) {
         for (const player of dataPlayer) {
             if (player.score === 3) {
-                alert("Kamu Menang!");
                 player.result = true;
                 result = player.result;
-                localStorage.clear();
+                alert("Kamu Menang!");
             }
         }
     }
@@ -193,30 +194,32 @@ const resultPlayer = () => {
     
 window.document.addEventListener('DOMContentLoaded', () => {
     showScore()
-    if (localStorage.getItem(dataUser) === null) {
+    const dataPlayer = getDataLocalStorage();
+    if (localStorage.getItem(dataUser) !== null) {
+        if(dataPlayer[0].score === 3) {
+            button[0].style.display = 'none';
+        }
+    } else {
         masukanNama();
     }
 })
     
-btnAnswer.addEventListener('click', (e) => {
-    checkAnswer();
-    showScore();
-    saveDataLocal();
-    resultPlayer();
-
-    if (localStorage.getItem(dataUser) === null) {
-        showScore();
-           setTimeout(() => {
-               masukanNama();
-               const objUser = makeObjectUser(namaUser, jawaban, 0, false);
-               usrArr[0] = objUser;
-               localStorage.setItem(dataUser, JSON.stringify(usrArr));
-           }, 2000);
-    }
-
-    // window.location.reload();
-    e.stopPropagation();
+button.forEach(element => {
+   element.addEventListener('click', (e) => {
+        if(e.target.classList.contains('btn-answer')) {
+            checkAnswer();
+            saveDataLocal();
+            showScore();
+            resultPlayer();
+        } else {
+            localStorage.clear();
+        }
+        window.location.reload();
+   });
 });
+// .addEventListener('click', (e) => {
+
+// });
 
 let widthScreen;
 widthScreen = document.body.clientWidth;
