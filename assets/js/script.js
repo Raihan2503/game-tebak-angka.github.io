@@ -166,7 +166,7 @@ const showScore = () => {
         if (localStorage.getItem(dataUser) === null) {
             scorePlayer.firstElementChild.innerHTML = scorer;
         } else {
-            scorePlayer.firstElementChild.innerHTML = dataPlayer[0].score;
+            scorePlayer.firstElementChild.innerHTML = (dataPlayer[0].score+1);
         }
     } else {
         if (localStorage.getItem(dataUser) !== null) {
